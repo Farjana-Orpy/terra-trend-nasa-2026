@@ -1,0 +1,14 @@
+HOW TO SAVE TERRA TREND ON GITHUB
+
+1. Go to https://github.com/new and sign in.
+2. Create a new public repository named terra-trend-nasa-2026.
+3. Open the ZIP and EXTRACT it. GitHub needs the individual website files, not the ZIP itself.
+4. On the new repository page choose Add file > Upload files, then drag the extracted website FILES AND FOLDERS.
+5. Click Commit changes.
+6. Open Settings > Pages, select Deploy from a branch, branch main, folder /(root), Save.
+7. Open your published link from Settings > Pages.
+8. Test the site's Offline example first; then test Live NASA POWER with real source values. GitHub Pages does NOT offer an API proxy. If live calls are blocked by CORS, publish on Netlify using the project's _redirects file.
+
+The PDF beginner handbook is inside documentation/.
+
+STATUS: Real NASA connectivity has not yet been confirmed in a live published deployment. Do not submit synthetic demonstration values as NASA research.

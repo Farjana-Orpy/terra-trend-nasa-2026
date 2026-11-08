@@ -1,0 +1,2 @@
+# Deploy this folder to Netlify: same-origin NASA POWER proxy (CORS-safe).
+/api/power  https://power.larc.nasa.gov/api/temporal/monthly/point  200
