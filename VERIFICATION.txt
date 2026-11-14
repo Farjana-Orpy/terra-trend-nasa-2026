@@ -24,3 +24,5 @@ Not yet verified:
 - The accuracy of each live result for all variables and locations.
 
 Important: the Pages Function test used a mocked upstream response. It verifies request validation and forwarding logic, not live NASA availability. Before submission, deploy the main branch, retrieve a fresh NASA POWER result, inspect the original source URL, compare the displayed values with the source response, and test the comparison and CSV export.
+- Added a source-specific interpretation warning: NASA POWER/MERRA-2 point trends are gridded estimates, not station observations or official city/division trends; independent datasets and local records should be compared before broad conclusions.
+- Added a methods note documenting the non-like-for-like contrast with the World Bank Bangladesh profile (CRU TS 4.07 / ERA5; Sylhet division trend for 1971–2020), without substituting its values for the NASA POWER point series.
