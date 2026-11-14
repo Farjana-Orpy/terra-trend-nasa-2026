@@ -1,24 +1,26 @@
 TERRATREND — IMPLEMENTATION STATUS
 Updated: 2026-11-14
 
-Changes in this repository update:
+Changes in the current repository version:
 - Removed the public synthetic/offline data mode and all sample-data fallbacks. If NASA data cannot be retrieved, the interface displays an error rather than inventing results.
 - Removed hackathon-specific labels and submission-only content from the public website.
 - Preserved the section title “Same planet. Different signals.”
 - Corrected the displayed annual precipitation unit to mm/year and solar irradiance unit to MJ/m²/day.
 - Added direct original NASA POWER request links for individual analyses and both locations in a comparison.
-- Added Cloudflare Pages routing, a validated Pages Function, a build script, and a route manifest that limits function invocation to /api/*.
+- Added Cloudflare Pages routing, a validated Pages Function, a static build script, and a route manifest that limits function invocation to /api/*.
 - Updated deployment instructions for Cloudflare Pages Git integration.
 
 Code-level checks completed:
 - app.js, science.js, and functions/api/power.js passed JavaScript syntax checks.
 - All literal DOM IDs referenced by app.js exist in index.html.
-- Static checks confirm the comparison heading, NASA source links, corrected units, proxy configuration, and removal of demo-mode code.
+- Static checks confirm the comparison heading, NASA source links, corrected units, Cloudflare proxy configuration, and removal of demo-mode code.
+- Pages Function mock test: a valid request was forwarded only to the fixed NASA POWER Monthly Point endpoint, with community=AG and format=JSON; unsupported parameters and invalid coordinates were rejected; non-GET requests returned HTTP 405.
+- Build-script smoke test: the script produced index.html, app.js, science.js, styles.css, the favicon, and a _routes.json manifest containing /api/*.
 
 Not yet verified:
-- A live Cloudflare Pages deployment of this commit.
-- A successful NASA POWER request through the deployed Pages Function.
+- A live Cloudflare Pages deployment of the current main branch.
+- A successful real NASA POWER request through the deployed Pages Function.
 - A full browser interaction and mobile-layout test on the public deployment.
 - The accuracy of each live result for all variables and locations.
 
-Historical browser and numerical checks from the earlier project version are not evidence that this new Cloudflare deployment is live or that every live NASA request works. Before submission, deploy the main branch, retrieve a fresh NASA POWER result, inspect the original source URL, compare the displayed values with the source response, and test the comparison and CSV export.
+Important: the Pages Function test used a mocked upstream response. It verifies request validation and forwarding logic, not live NASA availability. Before submission, deploy the main branch, retrieve a fresh NASA POWER result, inspect the original source URL, compare the displayed values with the source response, and test the comparison and CSV export.
