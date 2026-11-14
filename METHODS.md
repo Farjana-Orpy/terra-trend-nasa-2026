@@ -42,3 +42,11 @@ Ordinary least squares fits y(year) = intercept + slope × year to the included 
 - NASA POWER: https://power.larc.nasa.gov/ — data source and documentation.
 - Natural Earth: https://www.naturalearthdata.com/about/terms-of-use/ — public-domain map geometry.
 - NASA is not affiliated with or endorsing TerraTrend.
+
+## Cross-dataset interpretation
+
+A fitted trend describes the selected NASA POWER parameter, source product, grid cell, and study period. It should not automatically be generalized to a city, district, division, or national climate trend. NASA POWER meteorological parameters in this application are derived from MERRA-2; the monthly API documentation identifies MERRA-2 as the meteorological source. Compare findings with independent gridded datasets and local station observations before making claims about observed local climate change.
+
+For context, the World Bank Group's *Climate Risk Profile: Bangladesh* reports that its historical observed data use CRU TS v4.07 and ERA5, and reports a positive annual mean temperature trend for Sylhet division over 1971–2020. This is not a like-for-like comparison with a single NASA POWER/MERRA-2 grid point over 1990–2025: the source products, spatial aggregation, and study periods differ. The contrast is a reason to investigate data-product differences, not to replace one dataset's values with another's.
+
+Further reading: [NASA POWER Monthly and Annual API](https://power.larc.nasa.gov/docs/services/api/temporal/monthly/); [World Bank Climate Risk Profile: Bangladesh](https://climateknowledgeportal.worldbank.org/sites/default/files/country-profiles/16813-WB_Bangladesh%20Country%20Profile-WEB.pdf).
