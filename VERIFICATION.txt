@@ -5,7 +5,7 @@ Changes in the current repository version:
 - Removed the public synthetic/offline data mode and all sample-data fallbacks. If NASA data cannot be retrieved, the interface displays an error rather than inventing results.
 - Removed hackathon-specific labels and submission-only content from the public website.
 - Preserved the section title “Same planet. Different signals.”
-- Corrected the displayed annual precipitation unit to mm/year and solar irradiance unit to kWh/m²/day.
+- Corrected the displayed annual precipitation unit to mm/year and solar irradiance unit to MJ/m²/day.
 - Added direct original NASA POWER request links for individual analyses and both locations in a comparison.
 - Added Cloudflare Pages routing, a validated Pages Function, a static build script, and a route manifest that limits function invocation to /api/*.
 - Updated deployment instructions for Cloudflare Pages Git integration.
