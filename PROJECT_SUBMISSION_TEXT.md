@@ -8,7 +8,7 @@ TerraTrend is an interactive environmental data explorer that helps users invest
 
 ## Method and data
 
-Data source: NASA POWER Monthly Point API. Supported parameters: T2M, PRECTOTCORR, RH2M, WS10M, and ALLSKY_SFC_SW_DWN. Annual means are calendar-day-weighted; annual precipitation is calculated from monthly mean daily rates multiplied by calendar-month days. Incomplete years are excluded. Ordinary least squares estimates the linear trend; the displayed p-value and 95% confidence interval use a conventional t-based method.
+Data source: NASA POWER Monthly Point API, using the RE community for monthly and annual averaged solar and meteorological values. Supported parameters: T2M, PRECTOTCORR, RH2M, WS10M, and ALLSKY_SFC_SW_DWN. Annual means are calendar-day-weighted; annual precipitation is calculated from monthly mean daily rates multiplied by calendar-month days. Incomplete years are excluded. Ordinary least squares estimates the linear trend; the displayed p-value and 95% confidence interval use a conventional t-based method.
 
 ## Limitations to disclose
 
