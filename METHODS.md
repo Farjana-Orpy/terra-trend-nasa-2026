@@ -12,7 +12,7 @@ NASA POWER provides gridded Earth-system estimates derived from satellite observ
 | PRECTOTCORR | Corrected precipitation mean daily rate | mm/year; monthly rate multiplied by days in month, then summed |
 | RH2M | Relative humidity at 2 m | %; calendar-day-weighted mean |
 | WS10M | Wind speed at 10 m | m/s; calendar-day-weighted mean |
-| ALLSKY_SFC_SW_DWN | All-sky surface shortwave irradiance | MJ/m²/day; calendar-day-weighted mean |
+| ALLSKY_SFC_SW_DWN | All-sky surface shortwave irradiance | kWh/m²/day; calendar-day-weighted mean |
 
 NASA documentation: https://power.larc.nasa.gov/docs/services/api/temporal/monthly/
 
