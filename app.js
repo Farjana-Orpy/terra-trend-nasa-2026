@@ -52,7 +52,7 @@ function invalidateResults(){
  set('caseTitle','A story written in evidence.');
  set('caseNarrative','Select a location and run a new investigation to explore changes over time.');
  set('caseNotes','No result is interpreted until authentic NASA POWER data is retrieved.');
- set('chartLegendData','NASA POWER annual data');
+ set('chartLegendData','Annual values from NASA POWER monthly data');
  updateMode();
 }
 function onSettingsChanged(){invalidateResults();}
@@ -173,7 +173,7 @@ async function investigate(){const btn=$('runButton'),banner=$('errorBanner');ba
  current.primary={data,stats,l,key,nasa:result.nasa};
  plot($('trendChart'),[{values:data.annual}],[stats],key,true);$('chartEmpty').hidden=true;
  set('chartHeading',`${V[key].name} in ${l.name.split(',')[0]}`);set('chartSub',`${l.name} · ${stats.firstYear}–${stats.lastYear} · ${stats.n} complete years`);set('chartUnit',V[key].unit);
- set('dataBadge',result.cache?'NASA · CACHED':'NASA · RETRIEVED');set('chartLegendData','NASA POWER annual data');set('dataYears',`${stats.firstYear}–${stats.lastYear}`);
+ set('dataBadge',result.cache?'NASA · CACHED':'NASA · RETRIEVED');set('chartLegendData','Annual values from NASA POWER monthly data');set('dataYears',`${stats.firstYear}–${stats.lastYear}`);
  renderStats(data,stats,l,key,result.nasa);status(`NASA data analyzed · ${stats.n} complete years`);toast('NASA evidence analyzed successfully');
  const share=new URL(window.location.href);share.hash='explore';share.searchParams.set('location',$('presetLocation').value);share.searchParams.set('lat',String(l.lat));share.searchParams.set('lon',String(l.lon));share.searchParams.set('indicator',key);share.searchParams.set('start',String(period.start));share.searchParams.set('end',String(period.end));try{history.replaceState(null,'',share);}catch(_){ }
  }catch(err){set('dataBadge','REQUEST FAILED');status('Unable to retrieve NASA data','error');banner.innerHTML=`<strong>We could not complete this investigation.</strong> ${escapeXML(err.message)} <a href="${escapeXML(S.powerUrl(l.lat,l.lon,period.start,period.end,key))}" target="_blank" rel="noopener noreferrer">Open the raw NASA request ↗</a>. No findings are displayed until NASA data are retrieved.`;banner.hidden=false;
