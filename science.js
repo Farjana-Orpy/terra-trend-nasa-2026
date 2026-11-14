@@ -85,7 +85,7 @@
     return{n,slope,intercept,standardError,pValue,ciLow,ciHigh,r2:syy===0?(rss===0?1:0):Math.max(0,1-rss/syy),firstYear,lastYear,firstValue:data.find(p=>p.year===firstYear).value,lastValue:data.find(p=>p.year===lastYear).value,change,significant,direction:slope>0?'increase':slope<0?'decrease':'flat'};
   }
   function powerUrl(lat,lon,start,end,key){
-    const params=new URLSearchParams({parameters:key, community:(key==='ALLSKY_SFC_SW_DWN'?'RE':'AG'),latitude:String(lat),longitude:String(lon),start:String(start),end:String(end),format:'JSON'});
+    const params=new URLSearchParams({parameters:key, community:'RE',latitude:String(lat),longitude:String(lon),start:String(start),end:String(end),format:'JSON'});
     return `https://power.larc.nasa.gov/api/temporal/monthly/point?${params.toString()}`;
   }
   function validatePeriod(key,startYear,endYear){
