@@ -14,6 +14,8 @@ Changes in the current repository version:
 - Updated deployment instructions for Cloudflare Pages Git integration.
 
 Code-level checks completed:
+- Executed equivalent JavaScript checks against the current science engine for leap-year day weighting, annual precipitation accumulation, incomplete-year exclusion, AG/RE request routing, solar source-boundary rejection, and a known OLS slope; all passed.
+- Added a dependency-free Node.js test file at tests/science.test.cjs for repeatable local execution.
 - app.js, science.js, and functions/api/power.js passed JavaScript syntax checks.
 - All literal DOM IDs referenced by app.js exist in index.html.
 - Static checks confirm the comparison heading, NASA source links, corrected units, Cloudflare proxy configuration, and removal of demo-mode code.
