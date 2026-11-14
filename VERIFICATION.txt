@@ -24,6 +24,6 @@ Not yet verified:
 - The accuracy of each live result for all variables and locations.
 
 Important: the Pages Function test used a mocked upstream response. It verifies request validation and forwarding logic, not live NASA availability. Before submission, deploy the main branch, retrieve a fresh NASA POWER result, inspect the original source URL, compare the displayed values with the source response, and test the comparison and CSV export.
-- Solar API routing: the Pages Function now selects RE for ALLSKY_SFC_SW_DWN (monthly solar data) and AG for meteorological parameters; the interface and science engine use the corresponding kWh/m²/day unit for RE solar data.
+- Solar API routing: the Pages Function now selects RE for ALLSKY_SFC_SW_DWN (monthly solar data) and AG for meteorological parameters; the interface and science engine use the corresponding kWh/m²/day unit for RE solar data. The browser cache namespace was also advanced so old solar responses from the previous community setting cannot be reused.
 - Added a source-specific interpretation warning: NASA POWER/MERRA-2 point trends are gridded estimates, not station observations or official city/division trends; independent datasets and local records should be compared before broad conclusions.
 - Added a methods note documenting the non-like-for-like contrast with the World Bank Bangladesh profile (CRU TS 4.07 / ERA5; Sylhet division trend for 1971–2020), without substituting its values for the NASA POWER point series.
