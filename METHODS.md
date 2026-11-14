@@ -50,3 +50,15 @@ A fitted trend describes the selected NASA POWER parameter, source product, grid
 For context, the World Bank Group's *Climate Risk Profile: Bangladesh* reports that its historical observed data use CRU TS v4.07 and ERA5, and reports a positive annual mean temperature trend for Sylhet division over 1971–2020. This is not a like-for-like comparison with a single NASA POWER/MERRA-2 grid point over 1990–2025: the source products, spatial aggregation, and study periods differ. The contrast is a reason to investigate data-product differences, not to replace one dataset's values with another's.
 
 Further reading: [NASA POWER Monthly and Annual API](https://power.larc.nasa.gov/docs/services/api/temporal/monthly/); [World Bank Climate Risk Profile: Bangladesh](https://climateknowledgeportal.worldbank.org/sites/default/files/country-profiles/16813-WB_Bangladesh%20Country%20Profile-WEB.pdf).
+
+
+## Solar-series source boundary
+
+NASA POWER's solar time series concatenates GEWEX SRB R4-IP data from 1984 through December 2000 with CERES SYN1deg data beginning in January 2001. NASA warns that the change in source products can introduce a step discontinuity that is not a physical climate signal and advises against assessing climate trends across this source change without careful assessment. TerraTrend therefore rejects a single solar trend period that crosses 2000–2001. For solar analysis, choose a period wholly within 1984–2000 or wholly within 2001 onward.
+
+Solar parameters use a native global grid of approximately 1° latitude by 1° longitude. Meteorological parameters use a native grid of approximately 0.5° latitude by 0.625° longitude. The selected coordinates identify a gridded product location; they are not a point weather-station measurement.
+
+NASA references:
+- [Energy flux data sources and source-transition warning](https://power.larc.nasa.gov/docs/methodology/data/sources_fluxes/)
+- [Meteorological data sources and native grid resolution](https://power.larc.nasa.gov/docs/methodology/data/sources_meteorology/)
+- [NASA POWER user communities](https://power.larc.nasa.gov/docs/methodology/communities/)
