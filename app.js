@@ -132,7 +132,7 @@ function renderStats(data,stats,l,key,nasa){
  set('caseTitle',`${meta.short}: ${stats.significant?'a measurable trend':'a question still open'}.`);
  set('caseNarrative',narrative(data,stats,l,key));
  $('sourceDataLink').href=nasa;$('sourceLinkRow').hidden=false;
- set('caseNotes',`Source: NASA POWER monthly point API. ${key==='PRECTOTCORR'?'Annual precipitation is the sum of monthly daily mean estimates multiplied by calendar-month days.':'Annual values are calendar-day-weighted means of 12 monthly estimates.'} ${rejectWarning(data)} This is a source-specific gridded estimate, not a station observation or an official local climate trend. Compare with independent datasets and local station records before drawing conclusions. Ordinary least squares assumes independent residuals; year-to-year autocorrelation can affect p-values. No causal claim is made.`);
+ set('caseNotes',`Source: NASA POWER monthly point API. ${key==='PRECTOTCORR'?'Annual precipitation is the sum of monthly daily mean estimates multiplied by calendar-month days.':'Annual values are calendar-day-weighted means of 12 monthly estimates.'} ${key==='ALLSKY_SFC_SW_DWN'?'Solar source: GEWEX SRB through 2000 and CERES from 2001; this analysis is restricted to one source era.':' '} ${rejectWarning(data)} This is a source-specific gridded estimate, not a station observation or an official local climate trend. Compare with independent datasets and local station records before drawing conclusions. Ordinary least squares assumes independent residuals; year-to-year autocorrelation can affect p-values. No causal claim is made.`);
  $('copyFinding').disabled=false;$('printReport').disabled=false;$('downloadCsv').disabled=false;
  $('copyFinding').onclick=()=>copyText(`TERRA TREND — ${sourceLabel()}\n${narrative(data,stats,l,key)}\n\n${nasa}\nSource: NASA POWER (https://power.larc.nasa.gov/).`);
  $('downloadCsv').onclick=()=>downloadCSV(data,stats,l,key,nasa);
@@ -165,7 +165,7 @@ function plot(svg,dataSets,trendSets,key,tooltip=true){svg.innerHTML='';const wi
 }
 function showTip(p,x,y,key){const tip=$('chartTip');tip.textContent=`${p.year} · ${format(p.value,key)} ${V[key].unit}`;tip.hidden=false;tip.style.left=`${Math.min(82,(x/850)*100)}%`;tip.style.top=`${Math.max(8,(y/322)*100-18)}%`;}function hideTip(){$('chartTip').hidden=true;}
 async function investigate(){const btn=$('runButton'),banner=$('errorBanner');banner.hidden=true;let l,period,key;
- try{l=location();period=readPeriod();key=$('variable').value;if(!validCoords(l.lat,l.lon))throw new Error('Enter latitude from −90 to 90 and longitude from −180 to 180.');}
+ try{l=location();period=readPeriod();key=$('variable').value;S.validatePeriod(key,period.start,period.end);if(!validCoords(l.lat,l.lon))throw new Error('Enter latitude from −90 to 90 and longitude from −180 to 180.');}
  catch(err){banner.textContent=err.message;banner.hidden=false;banner.scrollIntoView({block:'nearest',behavior:'smooth'});return;}
  const runId=++current.runNo;btn.disabled=true;btn.firstChild.textContent='Analyzing NASA data ';set('runArrow','◌');status('Requesting NASA POWER data…','busy');set('dataBadge','CONTACTING NASA');
  try{const result=await acquireData(l.lat,l.lon,period.start,period.end,key);if(runId!==current.runNo)return;
@@ -182,8 +182,8 @@ async function investigate(){const btn=$('runButton'),banner=$('errorBanner');ba
 $('runButton').addEventListener('click',investigate);
 function fmtCompare(name,t,key){return `${fmtTrend(t,key)} · ${t.significant?'statistically significant':'not statistically significant'} (p ${S.readableP(t.pValue)})`}
 async function compare(){const a=LOCATIONS[$('compareA').value],b=LOCATIONS[$('compareB').value];if(!a||!b){toast('Select two places');return;}if(a===b||$('compareA').value===$('compareB').value){toast('Choose two different locations');return;}
- let period;try{period=readPeriod();}catch(err){toast(err.message);return;}
- const key=$('variable').value,btn=$('compareButton'),jobId=++current.compareNo;btn.disabled=true;set('compareStatus','REQUESTING NASA');
+ const key=$('variable').value;let period;try{period=readPeriod();S.validatePeriod(key,period.start,period.end);}catch(err){toast(err.message);set('compareStatus','PERIOD NEEDS REVIEW');set('compareInterpretation',err.message);return;}
+ const btn=$('compareButton'),jobId=++current.compareNo;btn.disabled=true;set('compareStatus','REQUESTING NASA');
  try{
  const [ra,rb]=await Promise.all([acquireData(a.lat,a.lon,period.start,period.end,key),acquireData(b.lat,b.lon,period.start,period.end,key)]);
  if(jobId!==current.compareNo)return;
