@@ -49,3 +49,7 @@ Do not create this as a Worker using the Workers Builds form. Choose the Pages p
 ## Attribution and independence
 
 NASA POWER data and documentation are attributed to NASA. The map geometry is from Natural Earth and is public domain. TerraTrend is an independent project and is not affiliated with or endorsed by NASA. The MIT license applies to original project code and documentation; external data and third-party assets retain their own terms.
+
+## Scientific safeguard for solar trends
+
+NASA POWER's solar archive changes source products at January 2001: GEWEX SRB through 2000 and CERES from 2001. Because NASA warns this transition can create a non-climatic discontinuity, TerraTrend prevents a single solar trend from spanning both source eras. Choose a solar study period wholly within 1984–2000 or 2001 onward. See METHODS.md for the source and spatial-resolution notes.
