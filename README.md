@@ -9,6 +9,7 @@ An interactive environmental data explorer for investigating long-term Earth-sys
 - Convert monthly NASA POWER records into complete annual values and visualize the time series with a fitted trend line.
 - Report the estimated change per decade, fitted change across the study period, a conventional two-sided slope test, and a 95% confidence interval.
 - Compare two locations over the same indicator and overlapping complete years in **Same planet. Different signals.**
+- Inspect the original NASA request for each analysis and for both locations in a comparison.
 - Export annual values as CSV, copy findings, or print the analysis.
 
 ## Data and scientific methods
@@ -27,9 +28,11 @@ This repository is prepared for Cloudflare Pages Git integration. The NASA data 
 
 1. In Cloudflare, open Workers & Pages → Create application → Pages → Connect to Git.
 2. Select the GitHub repository Farjana-Orpy/terra-trend-nasa-2026 and production branch main.
-3. Choose no framework preset. Set Build command to exit 0 and Build output directory to . (the repository root). Leave Root directory blank.
+3. Choose no framework preset. Set Build command to sh build.sh and Build output directory to dist. Leave Root directory blank.
 4. Keep environment variables empty and select Save and Deploy.
 5. Open the generated pages.dev URL and test a real NASA POWER analysis. Detailed instructions are in CLOUDFLARE_PAGES_SETUP.md.
+
+The build script copies only public website files into dist/ and writes dist/_routes.json so only /api/* requests invoke a Pages Function. The functions/ directory stays at the repository root, as required by Pages Functions.
 
 Do not create this as a Worker using the Workers Builds form. Choose the Pages product because this repository uses Pages Functions.
 
@@ -39,6 +42,7 @@ Do not create this as a Worker using the Workers Builds form. Choose the Pages p
 - app.js: user interactions, NASA data retrieval, charts, comparisons, and exports.
 - science.js: monthly-to-annual aggregation and statistical calculations.
 - functions/api/power.js: Cloudflare Pages Function for NASA POWER requests.
+- build.sh: prepares the static output directory and Pages route configuration.
 - METHODS.md: data provenance, calculations, and scientific limitations.
 - PROJECT_SUBMISSION_TEXT.md: draft text for the NASA project form; verify all claims against the deployed site before submitting.
 
