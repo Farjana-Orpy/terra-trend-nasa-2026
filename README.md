@@ -53,3 +53,14 @@ NASA POWER data and documentation are attributed to NASA. The map geometry is fr
 ## Scientific safeguard for solar trends
 
 NASA POWER's solar archive changes source products at January 2001: GEWEX SRB through 2000 and CERES from 2001. Because NASA warns this transition can create a non-climatic discontinuity, TerraTrend prevents a single solar trend from spanning both source eras. Choose a solar study period wholly within 1984–2000 or 2001 onward. See METHODS.md for the source and spatial-resolution notes.
+
+
+## Run the scientific unit tests
+
+With Node.js 18 or newer, run the dependency-free test suite from the repository root:
+
+```bash
+node --test tests/science.test.cjs
+```
+
+The tests cover leap-year day weighting, annual precipitation accumulation, incomplete-year exclusion, NASA community routing, the solar source-boundary safeguard, and a known linear-regression result.
