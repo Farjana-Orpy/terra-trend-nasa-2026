@@ -6,8 +6,14 @@ Changes in this repository update:
 - Removed hackathon-specific labels and submission-only content from the public website.
 - Preserved the section title “Same planet. Different signals.”
 - Corrected the displayed annual precipitation unit to mm/year and solar irradiance unit to MJ/m²/day.
-- Added Cloudflare Pages proxy routing and a validated Pages Function for the NASA POWER Monthly Point API.
+- Added direct original NASA POWER request links for individual analyses and both locations in a comparison.
+- Added Cloudflare Pages routing, a validated Pages Function, a build script, and a route manifest that limits function invocation to /api/*.
 - Updated deployment instructions for Cloudflare Pages Git integration.
+
+Code-level checks completed:
+- app.js, science.js, and functions/api/power.js passed JavaScript syntax checks.
+- All literal DOM IDs referenced by app.js exist in index.html.
+- Static checks confirm the comparison heading, NASA source links, corrected units, proxy configuration, and removal of demo-mode code.
 
 Not yet verified:
 - A live Cloudflare Pages deployment of this commit.
