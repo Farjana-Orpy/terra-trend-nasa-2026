@@ -45,6 +45,7 @@ function invalidateResults(){
  $('compareChart').innerHTML='';$('compareEmpty').hidden=false;
  $('chartTip').hidden=true;
  $('errorBanner').hidden=true;
+ $('sourceLinkRow').hidden=true;$('sourceDataLink').removeAttribute('href');$('compareSourceLinks').hidden=true;
  $('compareSummaries').innerHTML='<div class="compare-summary"><span>LOCATION A</span><strong>—</strong><p>Awaiting analysis</p></div><div class="compare-summary"><span>LOCATION B</span><strong>—</strong><p>Awaiting analysis</p></div>';
  set('compareInterpretation','The comparison will use the same indicator and period for two places.');
  set('dataBadge','AWAITING NASA DATA');
@@ -63,6 +64,7 @@ function resetComparison(message='AWAITING COMPARISON'){
  $('compareSummaries').innerHTML='<div class="compare-summary"><span>LOCATION A</span><strong>—</strong><p>Run comparison to see results</p></div><div class="compare-summary"><span>LOCATION B</span><strong>—</strong><p>Run comparison to see results</p></div>';
  set('compareInterpretation','Choose two locations and click Compare evidence to examine the same indicator over the same years.');
  set('compareStatus',message);
+ $('compareSourceLinks').hidden=true;
 }
 for(const id of ['compareA','compareB'])$(id).addEventListener('change',()=>resetComparison('SELECTION CHANGED — RUN COMPARISON'));
 
@@ -129,6 +131,7 @@ function renderStats(data,stats,l,key,nasa){
  set('statYears',String(stats.n));set('statYearsHelp',data.excluded.length?`${data.excluded.length} incomplete years excluded`:'All requested years complete');
  set('caseTitle',`${meta.short}: ${stats.significant?'a measurable trend':'a question still open'}.`);
  set('caseNarrative',narrative(data,stats,l,key));
+ $('sourceDataLink').href=nasa;$('sourceLinkRow').hidden=false;
  set('caseNotes',`Source: NASA POWER monthly point API. ${key==='PRECTOTCORR'?'Annual precipitation is the sum of monthly daily mean estimates multiplied by calendar-month days.':'Annual values are calendar-day-weighted means of 12 monthly estimates.'} ${rejectWarning(data)} Ordinary least squares assumes independent residuals; year-to-year autocorrelation can affect p-values. No causal claim is made.`);
  $('copyFinding').disabled=false;$('printReport').disabled=false;$('downloadCsv').disabled=false;
  $('copyFinding').onclick=()=>copyText(`TERRA TREND — ${sourceLabel()}\n${narrative(data,stats,l,key)}\n\n${nasa}\nSource: NASA POWER (https://power.larc.nasa.gov/).`);
@@ -137,7 +140,7 @@ function renderStats(data,stats,l,key,nasa){
 }
 function downloadCSV(data,stats,l,key,nasa){const lines=[`# TerraTrend | NASA POWER | ${l.name}`,`# Coordinates: ${l.lat}, ${l.lon}`,`# Variable: ${key} (${V[key].unit})`,`# Data provenance: ${nasa}`,`# P-value (two-sided OLS): ${stats.pValue}`,`# Trend per decade: ${stats.slope*10}`,`# Excluded incomplete years: ${data.excluded.map(i=>i.year).join(';')}`,`year,annual_value,ols_fitted_value,unit`];
  for(const p of data.annual)lines.push(`${p.year},${p.value.toFixed(6)},${(stats.intercept+stats.slope*p.year).toFixed(6)},${V[key].unit}`);
- downloadFile('terratrend-'+l.name.toLowerCase().replace(/[^a-z0-9]+/g,'-')+'-'+key+'.csv',lines.join('\\r\\n'),'text/csv;charset=utf-8');toast('NASA data CSV downloaded');}
+ downloadFile('terratrend-'+l.name.toLowerCase().replace(/[^a-z0-9]+/g,'-')+'-'+key+'.csv',lines.join('\r\n'),'text/csv;charset=utf-8');toast('NASA data CSV downloaded');}
 function downloadFile(name,text,type){const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);}
 async function copyText(str){try{await navigator.clipboard.writeText(str);toast('Copied to clipboard');}catch(_){const a=document.createElement('textarea');a.value=str;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{if(document.execCommand('copy'))toast('Copied to clipboard');else toast('Clipboard permission unavailable. Try copying from the page.');}catch(e){toast('Clipboard permission unavailable. Try copying from the page.');}a.remove();}}
 const NS='http://www.w3.org/2000/svg';function element(tag,attrs={},parent){const el=document.createElementNS(NS,tag);for(const[k,v] of Object.entries(attrs))el.setAttribute(k,v);if(parent)parent.appendChild(el);return el;}
@@ -194,6 +197,7 @@ async function compare(){const a=LOCATIONS[$('compareA').value],b=LOCATIONS[$('c
  const differences=sa.slope*10-sb.slope*10;
  $('compareSummaries').innerHTML=`<div class="compare-summary"><span>● LOCATION A · ${escapeXML(a.name)}</span><strong>${escapeXML(fmtTrend(sa,key))}</strong><p>${escapeXML(fmtCompare(a.name,sa,key))}</p></div><div class="compare-summary"><span style="color:var(--amber)">● LOCATION B · ${escapeXML(b.name)}</span><strong>${escapeXML(fmtTrend(sb,key))}</strong><p>${escapeXML(fmtCompare(b.name,sb,key))}</p></div>`;
  set('compareInterpretation',`${a.name} and ${b.name}: difference in estimated slopes = ${signed(differences,V[key].decimals)} ${V[key].unit} per decade. This is a descriptive contrast, not a statistical test of the difference between slopes. ${shared.size} shared complete calendar years (${Math.min(...shared)}–${Math.max(...shared)}) were used. Compare with geographic and data-source context.`);
+ $('compareSourceA').href=ra.nasa;$('compareSourceB').href=rb.nasa;$('compareSourceLinks').hidden=false;
  toast('Comparison complete with NASA data');current.compare={a,b,one,two,sa,sb,key};
  }catch(err){if(jobId===current.compareNo){set('compareStatus','REQUEST FAILED');toast(err.message);$('compareInterpretation').textContent=err.message+' No comparison values are invented.';}}
  finally{if(jobId===current.compareNo)btn.disabled=false;}
