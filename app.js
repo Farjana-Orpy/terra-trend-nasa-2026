@@ -55,7 +55,7 @@ function invalidateResults(){
  set('chartLegendData','Annual values from NASA POWER monthly data');
  updateMode();
 }
-function onSettingsChanged(){invalidateResults();}
+function onSettingsChanged(){invalidateResults();$('solarSourceHint').hidden=$('variable').value!=='ALLSKY_SFC_SW_DWN';}
 for(const id of ['variable','startYear','endYear'])$(id).addEventListener('change',onSettingsChanged);
 function resetComparison(message='AWAITING COMPARISON'){
  current.compareNo++; current.compare=null;
