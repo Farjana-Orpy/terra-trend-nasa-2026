@@ -46,6 +46,10 @@ Do not create this as a Worker using the Workers Builds form. Choose the Pages p
 - METHODS.md: data provenance, calculations, and scientific limitations.
 - PROJECT_SUBMISSION_TEXT.md: draft text for the NASA project form; verify all claims against the deployed site before submitting.
 
+## Development assistance disclosure
+
+Generative AI tools were used as development assistance for portions of ideation and research, code drafting and refinement, debugging, explanatory writing, visual design, and demonstration-video editing. The project team directed the feature choices, reviewed and tested the implementation, and made the final project decisions. No AI model is integrated into the deployed website; TerraTrend performs its trend calculations using its programmed statistical methods. NASA POWER environmental data are retrieved directly from NASA's API and are not AI-generated.
+
 ## Attribution and independence
 
 NASA POWER data and documentation are attributed to NASA. The map geometry is from Natural Earth and is public domain. TerraTrend is an independent project and is not affiliated with or endorsed by NASA. The MIT license applies to original project code and documentation; external data and third-party assets retain their own terms.
