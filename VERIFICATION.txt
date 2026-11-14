@@ -2,6 +2,9 @@ TERRATREND — IMPLEMENTATION STATUS
 Updated: 2026-11-14
 
 Changes in the current repository version:
+- Added a scientific guard that prevents solar trend analyses from crossing NASA POWER's 2000–2001 GEWEX SRB/CERES source transition.
+- Added NASA-documented solar and meteorological native grid-resolution notes.
+- Added a dependency-free Node.js test suite for annual aggregation, missing-month exclusion, source-community URLs, solar source-boundary validation, and regression.
 - Removed the public synthetic/offline data mode and all sample-data fallbacks. If NASA data cannot be retrieved, the interface displays an error rather than inventing results.
 - Removed hackathon-specific labels and submission-only content from the public website.
 - Preserved the section title “Same planet. Different signals.”
