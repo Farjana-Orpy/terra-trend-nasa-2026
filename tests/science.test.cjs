@@ -42,11 +42,11 @@ test('excludes years with a missing monthly record', () => {
   assert.deepEqual(result.excluded, [{ year: 2021, completeMonths: 11 }]);
 });
 
-test('routes solar requests to RE and meteorological requests to AG', () => {
-  const solar = new URL(S.powerUrl(24.89, 91.87, 2001, 2025, 'ALLSKY_SFC_SW_DWN'));
-  const temperature = new URL(S.powerUrl(24.89, 91.87, 1990, 2025, 'T2M'));
-  assert.equal(solar.searchParams.get('community'), 'RE');
-  assert.equal(temperature.searchParams.get('community'), 'AG');
+test('routes all monthly solar and meteorological requests to RE', () => {
+  for (const parameter of ['T2M', 'PRECTOTCORR', 'RH2M', 'WS10M', 'ALLSKY_SFC_SW_DWN']) {
+    const url = new URL(S.powerUrl(24.89, 91.87, 2001, 2025, parameter));
+    assert.equal(url.searchParams.get('community'), 'RE', parameter + ' must use the documented monthly community');
+  }
 });
 
 test('rejects solar trend periods that cross the 2001 source boundary', () => {
