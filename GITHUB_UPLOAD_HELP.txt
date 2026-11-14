@@ -8,12 +8,12 @@ Use Cloudflare Pages Git integration. Do not use the Workers Builds setup form a
 
 Build settings:
 - Framework preset: None
-- Build command: exit 0
-- Build output directory: .
+- Build command: sh build.sh
+- Build output directory: dist
 - Root directory: leave blank
 - Environment variables: none required
 
 Cloudflare dashboard path:
 Workers & Pages → Create application → Pages → Connect to Git → select this repository → configure the settings above → Save and Deploy.
 
-After the first deployment, test the NASA POWER connection from the public pages.dev URL. The project uses /api/power, handled by functions/api/power.js.
+The build script copies public files to dist/ and creates dist/_routes.json. The Pages Function stays at functions/api/power.js in the repository root.
