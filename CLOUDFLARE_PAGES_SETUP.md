@@ -2,7 +2,7 @@
 
 ## Before you start
 
-Your GitHub repository is Farjana-Orpy/terra-trend-nasa-2026. The public website is at the repository root, and the NASA proxy is in the root-level functions/api/power.js directory.
+Your GitHub repository is Farjana-Orpy/terra-trend-nasa-2026. The public source files are at the repository root. The Cloudflare Pages Function is in the root-level functions/api/power.js directory. The build script copies only the public website files into dist/, keeping the Functions directory outside the static output.
 
 ## Create the Pages project
 
@@ -19,12 +19,12 @@ Your GitHub repository is Farjana-Orpy/terra-trend-nasa-2026. The public website
 | --- | --- |
 | Framework preset | None |
 | Production branch | main |
-| Build command | exit 0 |
-| Build output directory | . |
+| Build command | sh build.sh |
+| Build output directory | dist |
 | Root directory | Leave blank |
 | Environment variables | None |
 
-Select Save and Deploy. The Pages Function must be included in the repository under functions/api/power.js. Do not use a static ZIP upload that omits Functions.
+Select Save and Deploy. The build script creates dist/ and a dist/_routes.json file that limits Function execution to /api/*. The Pages Function remains in the repository root at functions/api/power.js. Do not use a static ZIP upload that omits Functions.
 
 ## Verify the deployment
 
