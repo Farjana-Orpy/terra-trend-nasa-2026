@@ -107,7 +107,7 @@ async function fetchNASA(lat,lon,start,end,key){
    if(!payload?.properties?.parameter?.[key])throw new Error('NASA returned no usable data for this indicator and region.');
    try{localStorage.setItem(cacheKey,JSON.stringify({time:Date.now(),data:payload}));}catch(_){ }
    return{payload,nasa,cache:false};
- }catch(err){if(err.name==='AbortError')throw new Error('The NASA request timed out. Please retry or select a shorter period.');if(err instanceof TypeError)throw new Error('The browser could not reach NASA POWER. Please retry or check the site's data connection.');throw err;
+ }catch(err){if(err.name==='AbortError')throw new Error('The NASA request timed out. Please retry or select a shorter period.');if(err instanceof TypeError)throw new Error('The browser could not reach NASA POWER. Please retry or check the website data connection.');throw err;
  }finally{clearTimeout(t);}
 }
 
