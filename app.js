@@ -98,7 +98,7 @@ function endpoint(lat,lon,start,end,key){
 }
 function locationHost(){return window.location.hostname||'';}
 async function fetchNASA(lat,lon,start,end,key){
- const {api,nasa}=endpoint(lat,lon,start,end,key);const cacheKey=`terratrend-v4:${lat.toFixed(2)}:${lon.toFixed(2)}:${start}:${end}:${key}`;
+ const {api,nasa}=endpoint(lat,lon,start,end,key);const cacheKey=`terratrend-v5:${lat.toFixed(2)}:${lon.toFixed(2)}:${start}:${end}:${key}`;
  try{const cached=localStorage.getItem(cacheKey);if(cached){const obj=JSON.parse(cached);if(Date.now()-obj.time<24*60*60*1000)return{payload:obj.data,nasa,cache:true};}}catch(_){ }
  const controller=new AbortController(),t=setTimeout(()=>controller.abort(),65000);
  try{
