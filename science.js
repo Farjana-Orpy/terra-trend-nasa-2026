@@ -6,7 +6,7 @@
     PRECTOTCORR: { name:'Precipitation', short:'Rainfall', unit:'mm/year', type:'sum', decimals:0, description:'Corrected precipitation estimate', source:'POWER precipitation' },
     RH2M: { name:'Relative humidity', short:'Humidity', unit:'%', type:'mean', decimals:1, description:'Relative humidity at 2 metres', source:'MERRA-2' },
     WS10M: { name:'Wind speed', short:'Wind', unit:'m/s', type:'mean', decimals:2, description:'Wind speed at 10 metres', source:'MERRA-2' },
-    ALLSKY_SFC_SW_DWN: { name:'Solar irradiance', short:'Solar energy', unit:'MJ/m²/day', type:'mean', decimals:2, description:'All-sky surface shortwave irradiance', source:'CERES / POWER' }
+    ALLSKY_SFC_SW_DWN: { name:'Solar irradiance', short:'Solar energy', unit:'kWh/m²/day', type:'mean', decimals:2, description:'All-sky surface shortwave irradiance', source:'CERES / POWER' }
   });
   function daysInMonth(year, month) { return new Date(Date.UTC(year,month,0)).getUTCDate(); }
   function validNumber(v){ return typeof v==='number' && Number.isFinite(v) && v>-900; }
@@ -85,7 +85,7 @@
     return{n,slope,intercept,standardError,pValue,ciLow,ciHigh,r2:syy===0?(rss===0?1:0):Math.max(0,1-rss/syy),firstYear,lastYear,firstValue:data.find(p=>p.year===firstYear).value,lastValue:data.find(p=>p.year===lastYear).value,change,significant,direction:slope>0?'increase':slope<0?'decrease':'flat'};
   }
   function powerUrl(lat,lon,start,end,key){
-    const params=new URLSearchParams({parameters:key, community:'AG',latitude:String(lat),longitude:String(lon),start:String(start),end:String(end),format:'JSON'});
+    const params=new URLSearchParams({parameters:key, community:(key==='ALLSKY_SFC_SW_DWN'?'RE':'AG'),latitude:String(lat),longitude:String(lon),start:String(start),end:String(end),format:'JSON'});
     return `https://power.larc.nasa.gov/api/temporal/monthly/point?${params.toString()}`;
   }
   function readableP(p){return p<0.0001?'<0.0001':p.toFixed(4);}
