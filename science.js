@@ -3,7 +3,7 @@
   'use strict';
   const VARIABLES = Object.freeze({
     T2M: { name:'Air temperature', short:'Temperature', unit:'°C', type:'mean', decimals:2, description:'2-metre air temperature', source:'MERRA-2' },
-    PRECTOTCORR: { name:'Precipitation', short:'Rainfall', unit:'mm/year', type:'sum', decimals:0, description:'Corrected precipitation estimate', source:'POWER precipitation' },
+    PRECTOTCORR: { name:'Precipitation', short:'Rainfall', unit:'mm/year', type:'sum', decimals:0, description:'Corrected precipitation estimate', source:'MERRA-2 corrected precipitation' },
     RH2M: { name:'Relative humidity', short:'Humidity', unit:'%', type:'mean', decimals:1, description:'Relative humidity at 2 metres', source:'MERRA-2' },
     WS10M: { name:'Wind speed', short:'Wind', unit:'m/s', type:'mean', decimals:2, description:'Wind speed at 10 metres', source:'MERRA-2' },
     ALLSKY_SFC_SW_DWN: { name:'Solar irradiance', short:'Solar energy', unit:'kWh/m²/day', type:'mean', decimals:2, description:'All-sky surface shortwave irradiance', source:'GEWEX SRB / CERES' }
