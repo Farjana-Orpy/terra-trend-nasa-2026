@@ -2,7 +2,7 @@
 
 ## NASA POWER source
 
-TerraTrend uses the NASA POWER Monthly Point API at https://power.larc.nasa.gov/api/temporal/monthly/point. The application requests the AG community for monthly meteorological parameters and the RE community for monthly solar irradiance. NASA documents monthly and annual solar products for the RE community; AG solar products are offered as daily mean time series. The original NASA request URL is available from each completed analysis.
+TerraTrend uses the NASA POWER Monthly Point API at https://power.larc.nasa.gov/api/temporal/monthly/point. The application requests the RE (Renewable Energy) community for all five variables because this project uses NASA POWER's Monthly and Annual API. NASA documents RE as providing monthly and annual averaged solar and meteorological values; AG (Agroclimatology) is documented for daily mean time series. This keeps the request community aligned with the selected monthly temporal level. The original NASA request URL is available from each completed analysis.
 
 NASA POWER provides gridded Earth-system estimates derived from satellite observations, atmospheric models, and reanalysis products. These are not physical readings from a weather station at every selected map coordinate. Resolution and source products vary by variable.
 
@@ -62,3 +62,8 @@ NASA references:
 - [Energy flux data sources and source-transition warning](https://power.larc.nasa.gov/docs/methodology/data/sources_fluxes/)
 - [Meteorological data sources and native grid resolution](https://power.larc.nasa.gov/docs/methodology/data/sources_meteorology/)
 - [NASA POWER user communities](https://power.larc.nasa.gov/docs/methodology/communities/)
+
+
+### Precipitation monthly-rate conversion
+
+NASA POWER's monthly precipitation output is a monthly mean daily rate in mm/day. TerraTrend converts it to annual accumulation by multiplying each month's mean daily rate by the number of calendar days in that month and summing the 12 monthly totals. This is not multiplying a monthly accumulation by days; the input is a daily rate. Leap years use 29 days in February. See NASA's [POWER monthly API documentation](https://power.larc.nasa.gov/docs/services/api/temporal/monthly/) and NASA's [POWER precipitation explanation](https://appliedsciences.nasa.gov/sites/default/files/2021-07/Energy%20Management%20Q%26A%20Part%204.pdf).
