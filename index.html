@@ -51,6 +51,7 @@
     <p class="field-hint">Tip: click anywhere on the map to choose coordinates.</p>
     <label class="field-label" for="variable">02 — Earth system indicator</label>
     <select id="variable" class="field-input"><option value="T2M">Air temperature (°C)</option><option value="PRECTOTCORR">Annual precipitation (mm/year)</option><option value="RH2M">Relative humidity (%)</option><option value="WS10M">Wind speed (m/s)</option><option value="ALLSKY_SFC_SW_DWN">Solar irradiance (kWh/m²/day)</option></select>
+    <p class="field-hint" id="solarSourceHint" hidden>Solar data changes source in 2001. For a trend, choose 1984–2000 or 2001–2025; do not combine both periods.</p>
     <label class="field-label">03 — Study period</label>
     <div class="years-row"><label><span>From</span><input id="startYear" type="number" value="1990" min="1984" max="2023" step="1" aria-label="Start year"></label><span class="year-arrow">→</span><label><span>To</span><input id="endYear" type="number" value="2025" min="1985" max="2025" step="1" aria-label="End year"></label></div>
     <div class="control-foot"><p>Choose complete calendar years. Years with missing monthly records are excluded.</p><button id="runButton" type="button" class="btn btn-main full">Analyze NASA data <span id="runArrow">↗</span></button></div>
