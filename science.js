@@ -6,7 +6,7 @@
     PRECTOTCORR: { name:'Precipitation', short:'Rainfall', unit:'mm/year', type:'sum', decimals:0, description:'Corrected precipitation estimate', source:'POWER precipitation' },
     RH2M: { name:'Relative humidity', short:'Humidity', unit:'%', type:'mean', decimals:1, description:'Relative humidity at 2 metres', source:'MERRA-2' },
     WS10M: { name:'Wind speed', short:'Wind', unit:'m/s', type:'mean', decimals:2, description:'Wind speed at 10 metres', source:'MERRA-2' },
-    ALLSKY_SFC_SW_DWN: { name:'Solar irradiance', short:'Solar energy', unit:'kWh/m²/day', type:'mean', decimals:2, description:'All-sky surface shortwave irradiance', source:'CERES / POWER' }
+    ALLSKY_SFC_SW_DWN: { name:'Solar irradiance', short:'Solar energy', unit:'kWh/m²/day', type:'mean', decimals:2, description:'All-sky surface shortwave irradiance', source:'GEWEX SRB / CERES' }
   });
   function daysInMonth(year, month) { return new Date(Date.UTC(year,month,0)).getUTCDate(); }
   function validNumber(v){ return typeof v==='number' && Number.isFinite(v) && v>-900; }
@@ -88,6 +88,13 @@
     const params=new URLSearchParams({parameters:key, community:(key==='ALLSKY_SFC_SW_DWN'?'RE':'AG'),latitude:String(lat),longitude:String(lon),start:String(start),end:String(end),format:'JSON'});
     return `https://power.larc.nasa.gov/api/temporal/monthly/point?${params.toString()}`;
   }
+  function validatePeriod(key,startYear,endYear){
+    if(!VARIABLES[key]) throw new Error('Unsupported environmental variable.');
+    if(key==='ALLSKY_SFC_SW_DWN' && startYear<=2000 && endYear>=2001){
+      throw new Error('This solar series crosses a NASA source change in 2001 (GEWEX SRB through 2000; CERES from 2001). NASA warns against fitting one climate trend across this boundary. Choose 1984–2000 or 2001 onward.');
+    }
+    return true;
+  }
   function readableP(p){return p<0.0001?'<0.0001':p.toFixed(4);}
-  root.TerraScience={VARIABLES,daysInMonth,annualizeMonthly,regress,tTwoSidedP,tCritical95,powerUrl,readableP};
+  root.TerraScience={VARIABLES,daysInMonth,annualizeMonthly,regress,tTwoSidedP,tCritical95,powerUrl,readableP,validatePeriod};
 })(typeof window !== 'undefined'?window:globalThis);
