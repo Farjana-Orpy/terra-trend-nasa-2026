@@ -27,7 +27,7 @@ export async function onRequest({ request }) {
   if (!Number.isInteger(start) || !Number.isInteger(end) || start < 1984 || end > latestCompleteYear || end - start < 2 || start > end) return jsonError("Choose a valid period containing at least three complete calendar years.", 400);
   const upstream = new URL(NASA_ENDPOINT);
   upstream.searchParams.set("parameters", parameter);
-  upstream.searchParams.set("community", parameter === "ALLSKY_SFC_SW_DWN" ? "RE" : "AG");
+  upstream.searchParams.set("community", "RE");
   upstream.searchParams.set("latitude", String(latitude));
   upstream.searchParams.set("longitude", String(longitude));
   upstream.searchParams.set("start", String(start));
