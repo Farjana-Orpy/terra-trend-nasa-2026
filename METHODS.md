@@ -2,7 +2,7 @@
 
 ## NASA POWER source
 
-TerraTrend uses the NASA POWER Monthly Point API at https://power.larc.nasa.gov/api/temporal/monthly/point. The application requests the AG community and one supported parameter at a time. The original NASA request URL is available from each completed analysis.
+TerraTrend uses the NASA POWER Monthly Point API at https://power.larc.nasa.gov/api/temporal/monthly/point. The application requests the AG community for monthly meteorological parameters and the RE community for monthly solar irradiance. NASA documents monthly and annual solar products for the RE community; AG solar products are offered as daily mean time series. The original NASA request URL is available from each completed analysis.
 
 NASA POWER provides gridded Earth-system estimates derived from satellite observations, atmospheric models, and reanalysis products. These are not physical readings from a weather station at every selected map coordinate. Resolution and source products vary by variable.
 
@@ -12,7 +12,7 @@ NASA POWER provides gridded Earth-system estimates derived from satellite observ
 | PRECTOTCORR | Corrected precipitation mean daily rate | mm/year; monthly rate multiplied by days in month, then summed |
 | RH2M | Relative humidity at 2 m | %; calendar-day-weighted mean |
 | WS10M | Wind speed at 10 m | m/s; calendar-day-weighted mean |
-| ALLSKY_SFC_SW_DWN | All-sky surface shortwave irradiance | MJ/m²/day; calendar-day-weighted mean |
+| ALLSKY_SFC_SW_DWN | All-sky surface shortwave irradiance | kWh/m²/day; calendar-day-weighted mean |
 
 NASA documentation: https://power.larc.nasa.gov/docs/services/api/temporal/monthly/
 
