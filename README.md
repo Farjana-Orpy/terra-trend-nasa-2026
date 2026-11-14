@@ -48,7 +48,7 @@ Do not create this as a Worker using the Workers Builds form. Choose the Pages p
 
 ## Development assistance disclosure
 
-Generative AI tools were used as development assistance for portions of ideation and research, code drafting and refinement, debugging, explanatory writing, visual design, and demonstration-video editing. The project team directed the feature choices, reviewed and tested the implementation, and made the final project decisions. No AI model is integrated into the deployed website; TerraTrend performs its trend calculations using its programmed statistical methods. NASA POWER environmental data are retrieved directly from NASA's API and are not AI-generated.
+OpenAI ChatGPT was used as an AI-assisted development tool for portions of ideation and research, data interpretation, code drafting and refinement, debugging, explanatory writing, visual design, and demonstration-video development. The project team directed the feature choices, reviewed and tested the implementation, and made the final project decisions. No AI model is integrated into the deployed website; TerraTrend performs its trend calculations using its programmed statistical methods. NASA POWER environmental data are retrieved directly from NASA's API and are not AI-generated.
 
 ## Attribution and independence
 
