@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#08131d">
-<meta name="terra-proxy" content="auto">
-<meta name="description" content="Terra Trend: an open-data Earth science detective. Discover environmental trends, quantify change, and test statistical significance with NASA POWER data.">
-<meta property="og:title" content="Terra Trend — The planet leaves clues"><meta property="og:description" content="Investigate Earth's changing climate with authentic NASA data and transparent statistical evidence.">
-<title>Terra Trend — Earth System Trend Detective</title>
+<meta name="terra-proxy" content="cloudflare-pages">
+<meta name="description" content="TerraTrend is an interactive environmental data explorer for analyzing long-term Earth system trends with NASA POWER data.">
+<meta property="og:title" content="TerraTrend — Explore environmental change"><meta property="og:description" content="Explore long-term environmental patterns with NASA POWER data and transparent statistical methods.">
+<title>TerraTrend — Environmental Data Explorer</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -15,18 +15,17 @@
 <header class="topbar">
   <div class="shell top-inner">
     <a class="brand" href="#home" aria-label="Terra Trend home"><span class="brand-mark"><span class="brand-orbit"></span><span class="brand-core"></span></span><span><strong>TERRA<span>TREND</span></strong><small>EARTH INTELLIGENCE STUDIO</small></span></a>
-    <nav aria-label="Main navigation" class="main-nav"><a href="#home" class="active">Overview</a><a href="#explore">Explore</a><a href="#compare">Compare</a><a href="#guide">How to use</a><a href="#methods">Our science</a><a href="#submission">The project</a></nav>
+    <nav aria-label="Main navigation" class="main-nav"><a href="#home" class="active">Overview</a><a href="#explore">Explore</a><a href="#compare">Compare</a><a href="#guide">How to use</a><a href="#methods">Our science</a></nav>
     <a class="header-cta" href="#explore">Launch explorer <span>↗</span></a>
   </div>
 </header>
 <main>
 <section class="hero shell" id="home">
   <div class="hero-copy">
-    <div class="micro-tag"><span class="pulse"></span> 2026 NASA SPACE APPS CHALLENGE <span class="micro-slash">/</span> CHALLENGE 02</div>
     <h1>The planet<br>leaves <em>clues.</em><br><span>We follow the data.</span></h1>
-    <p class="hero-intro">An open scientific detective for our changing Earth. Find a place, follow decades of NASA observations and model data, and discover what the evidence actually says.</p>
+    <p class="hero-intro">Explore long-term changes in Earth-system conditions using NASA POWER data, transparent statistical methods, and location-based analysis.</p>
     <div class="hero-actions"><a href="#explore" class="btn btn-main">Start investigating <span>↗</span></a><a href="#guide" class="btn btn-outline">How to use Terra Trend <span>↘</span></a></div>
-    <div class="hero-proof"><span class="proof-symbol">✦</span> Live NASA POWER + clearly marked offline example <span class="proof-bar"></span> No account required</div>
+    <div class="hero-proof"><span class="proof-symbol">✦</span> Evidence-led environmental analysis <span class="proof-bar"></span> NASA POWER data</div>
   </div>
   <div class="hero-art" aria-label="Stylized Earth system visual">
     <div class="hero-art-top"><span class="dot dot-teal"></span> EARTH SYSTEM / MONITORING <span class="top-right">TERRA / 001</span></div>
@@ -39,26 +38,22 @@
   </div>
   <div class="hero-index" aria-hidden="true">01 <span></span> 05</div>
 </section>
-<section class="signal-strip"><div class="shell signal-inner"><span>FOLLOW THE SIGNAL</span><span class="signal-sep">✧</span><span>AUTHENTIC NASA POWER DATA</span><span class="signal-sep">✧</span><span>OPEN, EXPLAINABLE METHODS</span><span class="signal-sep">✧</span><span>GLOBAL LOCATIONS</span><span class="signal-sep">✧</span><span>REPRODUCIBLE RESULTS</span></div></section>
+<section class="signal-strip"><div class="shell signal-inner"><span>FOLLOW THE SIGNAL</span><span class="signal-sep">✧</span><span>NASA POWER DATA</span><span class="signal-sep">✧</span><span>OPEN, EXPLAINABLE METHODS</span><span class="signal-sep">✧</span><span>GLOBAL LOCATIONS</span><span class="signal-sep">✧</span><span>REPRODUCIBLE RESULTS</span></div></section>
 <section class="explore-section shell section-pad" id="explore">
  <div class="section-kicker"><span>01</span> / FIELD LABORATORY</div>
  <div class="section-heading"><div><h2>Begin an <em>investigation.</em></h2><p>Choose a place and an Earth system indicator. We'll do the scientific detective work.</p></div><span class="section-filigree">● <span>PLANETARY DATA LAB</span></span></div>
  <div class="lab-layout">
    <aside class="control-panel panel">
     <div class="panel-head"><div><span class="sub-label">YOUR MISSION</span><h3>Investigation setup</h3></div><span class="tiny-number">01 / 04</span></div>
-    <label class="field-label" for="dataMode">00 — Data source / working mode</label>
-    <select class="field-input" id="dataMode"><option value="nasa">Live NASA POWER — real research</option><option value="demo">Offline interactive example — NOT NASA</option></select>
-    <p id="modeExplanation" class="mode-explanation">Choose NASA for authentic results, or example mode to test all controls without internet.</p>
-    <span id="modeBadge" class="mode-badge">DATA SOURCE</span>
     <label class="field-label" for="presetLocation">01 — Choose a location</label>
     <select id="presetLocation" class="field-input"><option value="sylhet">Sylhet, Bangladesh</option><option value="dhaka">Dhaka, Bangladesh</option><option value="delhi">New Delhi, India</option><option value="london">London, UK</option><option value="newyork">New York, USA</option><option value="cairo">Cairo, Egypt</option><option value="nairobi">Nairobi, Kenya</option><option value="sydney">Sydney, Australia</option><option value="saopaulo">São Paulo, Brazil</option><option value="reykjavik">Reykjavík, Iceland</option><option value="custom">Custom coordinates</option></select>
     <div class="coords-row"><label>Latitude<input type="number" id="latitude" step="0.01" min="-90" max="90" value="24.89" aria-label="Latitude"></label><label>Longitude<input type="number" id="longitude" step="0.01" min="-180" max="180" value="91.87" aria-label="Longitude"></label></div>
     <p class="field-hint">Tip: click anywhere on the map to choose coordinates.</p>
     <label class="field-label" for="variable">02 — Earth system indicator</label>
-    <select id="variable" class="field-input"><option value="T2M">Air temperature (°C)</option><option value="PRECTOTCORR">Annual precipitation (mm)</option><option value="RH2M">Relative humidity (%)</option><option value="WS10M">Wind speed (m/s)</option><option value="ALLSKY_SFC_SW_DWN">Solar energy (kWh/m²/day)</option></select>
+    <select id="variable" class="field-input"><option value="T2M">Air temperature (°C)</option><option value="PRECTOTCORR">Annual precipitation (mm/year)</option><option value="RH2M">Relative humidity (%)</option><option value="WS10M">Wind speed (m/s)</option><option value="ALLSKY_SFC_SW_DWN">Solar irradiance (MJ/m²/day)</option></select>
     <label class="field-label">03 — Study period</label>
     <div class="years-row"><label><span>From</span><input id="startYear" type="number" value="1990" min="1984" max="2023" step="1" aria-label="Start year"></label><span class="year-arrow">→</span><label><span>To</span><input id="endYear" type="number" value="2025" min="1985" max="2025" step="1" aria-label="End year"></label></div>
-    <div class="control-foot"><p>Full calendar years only. Live NASA requires internet; offline sample results are never real observations.</p><button id="runButton" type="button" class="btn btn-main full">Analyze NASA data <span id="runArrow">↗</span></button></div>
+    <div class="control-foot"><p>Choose complete calendar years. Years with missing monthly records are excluded.</p><button id="runButton" type="button" class="btn btn-main full">Analyze NASA data <span id="runArrow">↗</span></button></div>
     <div class="status-block"><span class="status-dot" id="apiDot"></span><span id="apiStatus">Ready to connect to NASA POWER</span></div>
    </aside>
    <div class="lab-main">
@@ -85,32 +80,30 @@
  </div></section>
 
 <section class="guide-section section-pad" id="guide"><div class="shell">
-<div class="section-kicker"><span>03</span> / START HERE — ZERO SCIENCE BACKGROUND NEEDED</div>
-<div class="section-heading"><div><h2>Understand every <em>clue.</em></h2><p>This guide explains what to click and what the results mean. No programming or statistics background needed.</p></div></div>
+<div class="section-kicker"><span>03</span> / UNDERSTANDING THE DATA</div>
+<div class="section-heading"><div><h2>Understand every <em>clue.</em></h2><p>Learn how the data are prepared, analyzed, and interpreted.</p></div></div>
 <div class="guide-grid">
-<article class="guide-card"><div class="guide-step">01 · CHOOSE THE DATA</div><h3>Offline example or real NASA?</h3><p><strong>Offline interactive example</strong> lets you test all controls without internet. Its figures are invented teaching examples, <strong>NOT NASA observations</strong>.</p><p><strong>Live NASA POWER</strong> retrieves NASA Earth science data for actual investigations. Only use verified live results as NASA-based evidence.</p></article>
-<article class="guide-card"><div class="guide-step">02 · PICK THE PLACE</div><h3>Where on Earth?</h3><p>Choose a city from the list or click the world map. Latitude and longitude are simply the north/south and east/west numbers that identify that spot.</p><p>For your first test, keep <strong>Sylhet, Bangladesh</strong>.</p></article>
+<article class="guide-card"><div class="guide-step">01 · DATA SOURCE</div><h3>NASA POWER</h3><p>TerraTrend retrieves historical monthly Earth-system estimates from NASA POWER for the coordinates and period selected.</p><p>These are gridded data products, not measurements from a weather station at the exact selected point.</p></article>
+<article class="guide-card"><div class="guide-step">02 · PICK THE PLACE</div><h3>Where on Earth?</h3><p>Choose a city from the list or click the world map. Latitude and longitude are simply the north/south and east/west numbers that identify that spot.</p></article>
 <article class="guide-card"><div class="guide-step">03 · PICK WHAT TO MEASURE</div><h3>Which Earth indicator?</h3><p><strong>Temperature</strong> = how warm the air is. <strong>Precipitation</strong> = how much rain falls. <strong>Humidity</strong> = moisture in air. <strong>Wind speed</strong> = how fast air moves. <strong>Solar energy</strong> = sunlight energy reaching the surface.</p></article>
-<article class="guide-card"><div class="guide-step">04 · PICK THE YEARS</div><h3>When did change occur?</h3><p>Select the first and last calendar years. For example <strong>1990–2025</strong> means comparing an annual measure for each year in that period. Then click <strong>Analyze NASA data</strong> (or Analyze sample data).</p></article>
+<article class="guide-card"><div class="guide-step">04 · PICK THE YEARS</div><h3>When did change occur?</h3><p>Select the first and last calendar years, then click <strong>Analyze NASA data</strong>. Only complete years with all 12 monthly records are included.</p></article>
 <article class="guide-card"><div class="guide-step">05 · READ THE GRAPH</div><h3>How did it change?</h3><p>The chart line connects values for successive years. The dashed trend line estimates the overall long-term direction. Hover over or focus a point to see its year and value. A zigzag does not always mean a long-term trend.</p></article>
 <article class="guide-card"><div class="guide-step">06 · READ THE FINDINGS</div><h3>What do the numbers say?</h3><p><strong>Trend per decade</strong> = estimated change in ten years. <strong>Estimated change</strong> = change along the fitted line across the period. <strong>Significance</strong> tests evidence that the linear slope differs from zero. <strong>Years analyzed</strong> counts usable complete years.</p></article>
 <article class="guide-card"><div class="guide-step">07 · COMPARE TWO PLACES</div><h3>Could trends differ?</h3><p>Under <strong>Compare</strong>, choose two cities and click <strong>Compare evidence</strong>. You will see two series for the same years and indicator. Their slopes may differ, but the tool does not statistically test the difference between the slopes.</p></article>
-<article class="guide-card"><div class="guide-step">08 · SAVE OR SHARE</div><h3>Keep your evidence</h3><p><strong>CSV</strong> downloads annual numbers for spreadsheets; <strong>Copy findings</strong> copies the written interpretation; <strong>Print / save PDF</strong> prints the investigation; <strong>Copy project summary</strong> copies the submission description. Demo exports remain labeled as synthetic.</p></article>
+<article class="guide-card"><div class="guide-step">08 · SAVE OR SHARE</div><h3>Keep your evidence</h3><p><strong>CSV</strong> downloads annual values for further analysis; <strong>Copy findings</strong> copies the interpretation; <strong>Print / save PDF</strong> creates a printable report with the source and methods.</p></article>
 </div>
-<div class="guide-readout panel"><div><span class="guide-step">HOW TO INTERPRET A RESULT</span><h3>For example: +0.20 °C per decade</h3><p>It would mean a fitted rise of about 0.20°C every ten years. This is a <strong>hypothetical explanation</strong>, not a finding about Sylhet or any other city.</p></div><div><h3>What does “p-value” mean?</h3><p>A p-value below 0.05 is commonly called statistically significant under the model assumptions. It is <strong>not</strong> proof of what caused the change and does not guarantee the trend will continue. The confidence interval shows the uncertainty in the estimated slope.</p></div></div>
-<div class="guide-bottom"><strong>Ready?</strong><span>Start with Offline example to learn, then choose Live NASA POWER for real evidence.</span><a href="#explore" class="btn btn-main">Go to the explorer <span>↗</span></a></div>
+<div class="guide-readout panel"><div><span class="guide-step">HOW TO INTERPRET A RESULT</span><h3>Read the direction and rate</h3><p>A positive slope indicates an estimated increase; a negative slope indicates an estimated decrease. The rate per decade describes the fitted change over ten years.</p></div><div><h3>What does “p-value” mean?</h3><p>A p-value below 0.05 is commonly called statistically significant under the model assumptions. It is <strong>not</strong> proof of what caused the change and does not guarantee the trend will continue. The confidence interval shows the uncertainty in the estimated slope.</p></div></div>
+<div class="guide-bottom"><strong>Ready?</strong><span>Select a location and indicator, choose a study period, then analyze NASA POWER data.</span><a href="#explore" class="btn btn-main">Go to the explorer <span>↗</span></a></div>
 </div></section>
 
 <section class="methods-section section-pad shell" id="methods"><div class="section-kicker"><span>04</span> / THE SCIENCE BEHIND THE SIGNAL</div><div class="section-heading"><div><h2>Beautiful charts.<br><em>Defensible conclusions.</em></h2><p>Nothing hidden. Understand exactly how each Terra Trend conclusion is made.</p></div></div>
  <div class="method-grid"><article class="method-card"><span class="method-number">01 — SOURCE</span><div class="method-icon">◉</div><h3>Ask the Earth</h3><p>We query NASA POWER's monthly point API for historical Earth-system estimates at the selected coordinates. Each chart traces back to its source request.</p></article><article class="method-card"><span class="method-number">02 — PREPARE</span><div class="method-icon">▥</div><h3>Respect the units</h3><p>We calculate day-weighted annual means for temperature and other rates, and annual totals for precipitation. Years missing a month are excluded.</p></article><article class="method-card"><span class="method-number">03 — TEST</span><div class="method-icon">∿</div><h3>Find the trend</h3><p>Ordinary least squares estimates the annual slope. A two-sided t-test, p-value, and 95% confidence interval describe statistical evidence.</p></article><article class="method-card"><span class="method-number">04 — INTERPRET</span><div class="method-icon">✦</div><h3>Tell it responsibly</h3><p>We report effect size, uncertainty, and caveats. Statistical significance is not causation, and a non-significant result does not prove stability.</p></article></div>
  <div class="method-detail panel"><div><span class="sub-label">WHY THIS MATTERS</span><h3>One planet. More than one interpretation.</h3><p>NASA POWER is a gridded Earth science data product, not a thermometer physically installed at your exact selected point. Meteorological data combine measurements and models. Regional differences, missing months, and year-to-year dependence affect how conclusions should be read.</p></div><div class="formula-block"><div>LINEAR TREND</div><strong>y = α + β × year</strong><span>β is the change per year. Multiply by 10 to obtain the estimated change per decade.</span><hr><div>STATISTICAL EVIDENCE</div><strong>p &lt; 0.05</strong><span>Conventional threshold for a two-sided regression slope test; assumes independent errors. See limitations before interpretation.</span></div></div>
- <div class="source-row"><div><strong>Trace the evidence.</strong><p>Original documentation and datasets, linked directly.</p></div><a href="https://power.larc.nasa.gov/docs/services/api/temporal/monthly/" target="_blank" rel="noopener noreferrer">NASA POWER monthly API ↗</a><a href="https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/" target="_blank" rel="noopener noreferrer">Official challenge ↗</a></div>
+ <div class="source-row"><div><strong>Trace the evidence.</strong><p>Original documentation and datasets, linked directly.</p></div><a href="https://power.larc.nasa.gov/docs/services/api/temporal/monthly/" target="_blank" rel="noopener noreferrer">NASA POWER monthly API ↗</a></div>
 </section>
-<section class="submission-section section-pad" id="submission"><div class="shell submission-layout"><div><div class="section-kicker"><span>05</span> / THE MISSION BRIEF</div><h2>Turning Earth data<br>into <em>understanding.</em></h2><p class="submission-intro">Terra Trend helps students, communities and curious minds identify environmental change without requiring advanced statistical or programming expertise.</p><div class="submission-actions"><button class="btn btn-main" id="copySubmission">Copy project summary <span>↗</span></button><a class="btn btn-outline" href="https://www.spaceappschallenge.org/2026/" rel="noopener noreferrer" target="_blank">Official Space Apps portal ↗</a></div></div><div class="submission-card"><div class="submission-card-top"><span>NASA SPACE APPS / 2026</span><span>PROJECT CARD 01</span></div><h3>Terra Trend</h3><span class="submission-subtitle">Be An Earth System Trend Detective!</span><div class="submission-sep"></div><div class="submission-card-row"><span>CHALLENGE</span><strong>Earth system trend detection</strong></div><div class="submission-card-row"><span>DATA</span><strong>NASA POWER</strong></div><div class="submission-card-row"><span>METHOD</span><strong>OLS + statistical test</strong></div><div class="submission-card-row"><span>FORMAT</span><strong>Interactive web application</strong></div><div class="submission-card-foot">BUILDING WITH OPEN DATA <span>✦</span> FOR A MORE UNDERSTANDABLE EARTH</div></div></div>
-  <div class="shell submission-note"><span>SUBMISSION WINDOW</span><p>NASA Space Apps project submission opens November 14, 2026 at 9:00 AM and closes November 15, 2026 at 11:59 PM local event time. You must submit the project through your team page; this website does not submit it automatically.</p></div>
-</section>
+
 </main>
-<footer class="footer"><div class="shell footer-inner"><a href="#home" class="footer-logo">TERRA<span>TREND</span><small>●</small></a><div>Created for the 2026 NASA Space Apps Challenge. Not affiliated with or endorsed by NASA. NASA POWER data and documentation are acknowledged.</div><a href="#home">Back to top ↑</a></div></footer>
+<footer class="footer"><div class="shell footer-inner"><a href="#home" class="footer-logo">TERRA<span>TREND</span><small>●</small></a><div>Independent environmental analysis tool. Data source: <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA POWER</a>. Not affiliated with or endorsed by NASA.</div><a href="#home">Back to top ↑</a></div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="science.js"></script><script src="app.js"></script>
 </body></html>

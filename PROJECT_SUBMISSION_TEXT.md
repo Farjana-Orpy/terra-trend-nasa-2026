@@ -1,19 +1,25 @@
-# Terra Trend — Discover How Our Planet Is Changing
+# TerraTrend — NASA Space Apps Challenge 2026
 
-**Challenge:** NASA Space Apps Challenge 2026 — Be An Earth System Trend Detective!
+**Selected challenge:** Be An Earth System Trend Detective!
 
-**Problem.** Environmental change is hard to interpret because Earth-system variables change in different ways across locations and years, and visual trends alone can be misleading.
+## Summary draft
 
-**Solution.** Terra Trend is a responsive interactive web application that helps users investigate trends in NASA POWER climate and energy variables. The user selects a place, variable and historical period; the app retrieves monthly NASA POWER estimates and converts complete calendar years into comparable annual values. It displays an annual time-series chart, an ordinary-least-squares trend line, the estimated change per decade, total change, a conventional two-sided significance test, a 95% confidence interval, and explanatory findings. The user can compare two places on the same measure and time span and export the data and a report.
+TerraTrend is an interactive environmental data explorer that helps users investigate long-term changes in Earth-system conditions. Users select a location, indicator, and study period, then analyze monthly NASA POWER data converted into complete annual values. The application visualizes annual patterns and a fitted linear trend, reports the estimated rate of change per decade, and presents a conventional statistical test and confidence interval. Its **Same planet. Different signals.** feature compares the same indicator across two locations over shared complete years. Users can inspect the original NASA data request and export annual values for further analysis.
 
-**NASA data:** NASA POWER monthly point data (T2M, PRECTOTCORR, RH2M, WS10M, ALLSKY_SFC_SW_DWN): https://power.larc.nasa.gov/docs/services/api/temporal/monthly/
+## Method and data
 
-**Innovation and accessibility:** Terra Trend guides people without scientific expertise through the Earth-system trend questions: what is changing, where, how much, and whether the fitted linear trend is statistically distinguishable from zero. Clear provenance labels distinguish actual NASA data from the optional synthetic offline demonstration mode.
+Data source: NASA POWER Monthly Point API. Supported parameters: T2M, PRECTOTCORR, RH2M, WS10M, and ALLSKY_SFC_SW_DWN. Annual means are calendar-day-weighted; annual precipitation is calculated from monthly mean daily rates multiplied by calendar-month days. Incomplete years are excluded. Ordinary least squares estimates the linear trend; the displayed p-value and 95% confidence interval use a conventional t-based method.
 
-**Methods:** day-weighted annual means for temperature/humidity/wind/solar energy; annual precipitation obtained from monthly mean daily precipitation x days in month; incomplete years excluded; OLS fit and conventional two-sided t test on annual values; 95% confidence interval. Significance is conditional on assumptions (including residual independence); neither the trends nor the p-values prove causation. NASA POWER is gridded environmental data, not an on-site sensor reading for the exact map location.
+## Limitations to disclose
 
-**Deliverable:** standalone functional website, publishable static web files and source code.
+NASA POWER values are gridded estimates, not local weather-station measurements at the exact selected coordinate. The classical regression test assumes independent residuals, so serial correlation can affect significance. The location comparison is descriptive and does not test the difference between slopes. The application does not establish causation or make forecasts.
 
-**Disclaimer:** This project is not affiliated with or endorsed by NASA. Any example values in the offline demonstration mode are synthetic and not NASA measurements. Live API behavior must be tested at the final hosted URL before submission.
+## Submission checks
 
-**Official challenge:** https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/
+- Confirm that the deployed Cloudflare Pages site retrieves genuine NASA POWER records for at least one location and variable.
+- Confirm the original NASA request link and CSV export refer to the same retrieved data.
+- Upload a demonstration recorded from the final deployed application.
+- Complete the NASA form's Super Intelligence disclosure accurately for all AI-assisted code, text, images, and video used.
+- Verify third-party asset permissions and comply with the official event rules before final submission.
+
+Do not claim that live deployment, every variable, or every calculation has been verified until those checks have actually been completed.

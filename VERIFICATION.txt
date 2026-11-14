@@ -1,41 +1,18 @@
-TERRA TREND — 2026-11-07 INTERACTION AND DATA-INTEGRITY VERIFICATION
+TERRATREND — IMPLEMENTATION STATUS
+Updated: 2026-11-14
 
-Tests performed in headless Chromium with embedded HTML from the final standalone file:
+Changes in this repository update:
+- Removed the public synthetic/offline data mode and all sample-data fallbacks. If NASA data cannot be retrieved, the interface displays an error rather than inventing results.
+- Removed hackathon-specific labels and submission-only content from the public website.
+- Preserved the section title “Same planet. Different signals.”
+- Corrected the displayed annual precipitation unit to mm/year and solar irradiance unit to MJ/m²/day.
+- Added Cloudflare Pages proxy routing and a validated Pages Function for the NASA POWER Monthly Point API.
+- Updated deployment instructions for Cloudflare Pages Git integration.
 
-A. 19/19 principal interactions passed:
-- Offline data mode selected and sample chart rendered
-- CSV button available after successful sample computation
-- City dropdown updates map and graph
-- Precipitation variable selected and units displayed correctly
-- Start/end years updated the analyzed count
-- Map-click custom coordinates
-- Invalid latitude rejected visibly
-- Comparison of two locations draws graph
-- CSV file downloaded with synthetic-data label
-- Copy findings, copy project summary
-- Live mode clears synthetic results
-- Simulated network failure shows explicit error and demo recovery
-- No page-level JS errors, phone viewport fits without horizontal overflow
+Not yet verified:
+- A live Cloudflare Pages deployment of this commit.
+- A successful NASA POWER request through the deployed Pages Function.
+- A full browser interaction and mobile-layout test on the public deployment.
+- The accuracy of each live result for all variables and locations.
 
-B. 8/8 simulated NASA-response interaction checks passed:
-- Example NASA POWER JSON response intercepted and parsed for T2M
-- Statistics and 36 annual records rendered
-- Same for PRECTOTCORR, RH2M, WS10M, ALLSKY_SFC_SW_DWN
-- Two-location NASA-JSON comparison
-- No JavaScript exceptions
-
-C. 17/17 UI regression checks passed:
-- No horizontal overflow at width 320, 390, 600, 768, 1024, 1440 px
-- Beginner guide present at all six widths
-- Comparison clears automatically after a city change and redraws on rerun
-- Print control invokes window.print
-- Official NASA documentation hyperlink exists
-
-D. Pure science calculation checks passed:
-- Perfect linear trend: slope 0.5/year, p=0, 9.5 total fitted change over 20 years
-- Leap-year precipitation aggregation: 395 mm in 2000 with prescribed sample inputs vs 393 mm for 2001/2002
-- Missing month causes exclusion of incomplete annual value
-
-Important limitation: these tests DO NOT establish live production connectivity to NASA or to a Netlify external proxy. The container cannot make live requests to NASA POWER (DNS/network restricted) and browser's local URL navigation is restricted. The test of the standalone application uses direct HTML rendering in Chromium. Before using this at the NASA competition, publish it, choose Live NASA POWER, verify that an actual remote request works for your desired city and years, and read NASA POWER's own source data. Do not submit synthetic demonstration values as NASA observations.
-
-This is a functional software project with an offline training mode and a live mode that depends on NASA API + hosting + internet. There is no backend user authentication/database: they are not required for this challenge's chosen functionality.
+Historical browser and numerical checks from the earlier project version are not evidence that this new Cloudflare deployment is live or that every live NASA request works. Before submission, deploy the main branch, retrieve a fresh NASA POWER result, inspect the original source URL, compare the displayed values with the source response, and test the comparison and CSV export.

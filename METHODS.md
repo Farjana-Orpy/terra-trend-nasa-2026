@@ -1,13 +1,44 @@
-# Terra Trend — Scientific Methods and Limitations
+# TerraTrend — Methods, data provenance, and limitations
 
-## Source
-NASA POWER Monthly Point API, by latitude and longitude. Our selected indicators: 2 m air temperature T2M; corrected precipitation PRECTOTCORR; relative humidity at 2 m RH2M; wind speed at 10 m WS10M; and surface solar shortwave irradiance ALLSKY_SFC_SW_DWN. They are geospatially gridded datasets derived from models/observational analyses, not physical readings at every map click.
+## NASA POWER source
+
+TerraTrend uses the NASA POWER Monthly Point API at https://power.larc.nasa.gov/api/temporal/monthly/point. The application requests the AG community and one supported parameter at a time. The original NASA request URL is available from each completed analysis.
+
+NASA POWER provides gridded Earth-system estimates derived from satellite observations, atmospheric models, and reanalysis products. These are not physical readings from a weather station at every selected map coordinate. Resolution and source products vary by variable.
+
+| Parameter | Meaning | Annual display |
+| --- | --- | --- |
+| T2M | 2 m air temperature | °C; calendar-day-weighted mean |
+| PRECTOTCORR | Corrected precipitation mean daily rate | mm/year; monthly rate multiplied by days in month, then summed |
+| RH2M | Relative humidity at 2 m | %; calendar-day-weighted mean |
+| WS10M | Wind speed at 10 m | m/s; calendar-day-weighted mean |
+| ALLSKY_SFC_SW_DWN | All-sky surface shortwave irradiance | MJ/m²/day; calendar-day-weighted mean |
+
+NASA documentation: https://power.larc.nasa.gov/docs/services/api/temporal/monthly/
 
 ## Annual aggregation
-Only years with 12 valid monthly records are counted. The valid range ignores invalid/missing values (including NASA missing sentinel). For mean-type variables, calculate an annual value as sum(month_value x number_of_days_in_month) / sum(days). For precipitation, annual mm = sum(monthly average precipitation rate in mm/day x days_in_month). Leap years use February 29 days.
+
+1. Retrieve monthly values for the selected coordinate, parameter, and calendar years.
+2. Treat NASA missing-value sentinels and invalid values as missing.
+3. Exclude any year that does not contain all 12 valid monthly records.
+4. For mean-type variables, calculate the annual value as the sum of (monthly value × calendar days in month) divided by the total calendar days in the year.
+5. For PRECTOTCORR, calculate annual precipitation as the sum of (monthly mean daily rate × calendar days in month). Leap years use 29 days for February.
 
 ## Trend estimation
-Fit ordinary least squares to complete annual observations: y(year) = intercept + slope x year. Trend per decade = slope x 10. Fitted total change = slope x (last_year - first_year). A conventional two-sided Student-t test tests the hypothesis of slope = 0 and a t-based confidence interval provides 95% limits. p < 0.05 is labeled “Detected” by convention, not “certain” or “caused by climate change.”
 
-## Limitations
-Trend inference is sensitive to chosen years, completeness, serial correlation, outliers, variation in climate and data sources. Regression residuals may not be independent, so classical p-values and intervals may be optimistic. Comparing two trends is descriptive; the interface does not perform a statistical test of difference in slopes. No future projections or causality are claimed. Downloadable offline values are synthetic examples only.
+Ordinary least squares fits y(year) = intercept + slope × year to the included annual values. The displayed trend per decade is slope × 10. The fitted change across the analyzed period is slope × (last included year − first included year). The interface reports a conventional two-sided Student-t test of slope = 0 and a t-based 95% confidence interval.
+
+## Interpretation and limitations
+
+- A statistically significant fitted slope is not proof of causation.
+- A non-significant result does not prove that conditions are stable.
+- Classical t-tests and confidence intervals assume independent residuals. Annual environmental series can be autocorrelated, so p-values may be optimistic.
+- Linear trends summarize the selected period and may hide nonlinear changes, extremes, or shifts in the underlying data product.
+- The location comparison uses the same indicator and overlapping complete years, but it does not perform a statistical test of the difference between the two slopes.
+- TerraTrend does not forecast future conditions and should not be used alone for safety-critical decisions.
+
+## Third-party sources
+
+- NASA POWER: https://power.larc.nasa.gov/ — data source and documentation.
+- Natural Earth: https://www.naturalearthdata.com/about/terms-of-use/ — public-domain map geometry.
+- NASA is not affiliated with or endorsing TerraTrend.

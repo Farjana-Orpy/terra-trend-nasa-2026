@@ -1,14 +1,19 @@
-HOW TO SAVE TERRA TREND ON GITHUB
+TERRATREND — CLOUDFLARE PAGES GIT DEPLOYMENT
 
-1. Go to https://github.com/new and sign in.
-2. Create a new public repository named terra-trend-nasa-2026.
-3. Open the ZIP and EXTRACT it. GitHub needs the individual website files, not the ZIP itself.
-4. On the new repository page choose Add file > Upload files, then drag the extracted website FILES AND FOLDERS.
-5. Click Commit changes.
-6. Open Settings > Pages, select Deploy from a branch, branch main, folder /(root), Save.
-7. Open your published link from Settings > Pages.
-8. Test the site's Offline example first; then test Live NASA POWER with real source values. GitHub Pages does NOT offer an API proxy. If live calls are blocked by CORS, publish on Netlify using the project's _redirects file.
+Repository: https://github.com/Farjana-Orpy/terra-trend-nasa-2026
+Cloudflare Pages project name: terratrend
+Production branch: main
 
-The PDF beginner handbook is inside documentation/.
+Use Cloudflare Pages Git integration. Do not use the Workers Builds setup form and do not use a static drag-and-drop upload because the project includes a Pages Function.
 
-STATUS: Real NASA connectivity has not yet been confirmed in a live published deployment. Do not submit synthetic demonstration values as NASA research.
+Build settings:
+- Framework preset: None
+- Build command: exit 0
+- Build output directory: .
+- Root directory: leave blank
+- Environment variables: none required
+
+Cloudflare dashboard path:
+Workers & Pages → Create application → Pages → Connect to Git → select this repository → configure the settings above → Save and Deploy.
+
+After the first deployment, test the NASA POWER connection from the public pages.dev URL. The project uses /api/power, handled by functions/api/power.js.
