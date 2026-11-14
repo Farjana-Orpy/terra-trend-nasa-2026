@@ -14,7 +14,7 @@ An interactive environmental data explorer for investigating long-term Earth-sys
 
 ## Data and scientific methods
 
-TerraTrend uses the NASA POWER Monthly Point API. The application links each result to the corresponding original NASA request. NASA POWER provides gridded Earth-science estimates; values are not direct weather-station readings at every selected coordinate. Trends are specific to the selected product, grid cell, and period, and should be compared with independent datasets or station records before being generalized as local observed climate change.
+TerraTrend uses the NASA POWER Monthly Point API with the RE (Renewable Energy) community for all five monthly solar and meteorological variables. NASA documents RE as supporting monthly and annual averaged data; AG is documented for daily mean time series. The application links each result to the corresponding original NASA request. NASA POWER provides gridded Earth-science estimates; values are not direct weather-station readings at every selected coordinate. Trends are specific to the selected product, grid cell, and period, and should be compared with independent datasets or station records before being generalized as local observed climate change.
 
 Monthly values are aggregated into annual values. Temperature, relative humidity, wind speed, and solar irradiance use calendar-day-weighted annual means. Corrected precipitation is a monthly mean daily rate, so annual precipitation is calculated by multiplying each monthly rate by the number of days in that month and summing the results. Incomplete calendar years are excluded.
 
