@@ -132,7 +132,7 @@ function renderStats(data,stats,l,key,nasa){
  set('caseTitle',`${meta.short}: ${stats.significant?'a measurable trend':'a question still open'}.`);
  set('caseNarrative',narrative(data,stats,l,key));
  $('sourceDataLink').href=nasa;$('sourceLinkRow').hidden=false;
- set('caseNotes',`Source: NASA POWER monthly point API. ${key==='PRECTOTCORR'?'Annual precipitation is the sum of monthly daily mean estimates multiplied by calendar-month days.':'Annual values are calendar-day-weighted means of 12 monthly estimates.'} ${rejectWarning(data)} Ordinary least squares assumes independent residuals; year-to-year autocorrelation can affect p-values. No causal claim is made.`);
+ set('caseNotes',`Source: NASA POWER monthly point API. ${key==='PRECTOTCORR'?'Annual precipitation is the sum of monthly daily mean estimates multiplied by calendar-month days.':'Annual values are calendar-day-weighted means of 12 monthly estimates.'} ${rejectWarning(data)} This is a source-specific gridded estimate, not a station observation or an official local climate trend. Compare with independent datasets and local station records before drawing conclusions. Ordinary least squares assumes independent residuals; year-to-year autocorrelation can affect p-values. No causal claim is made.`);
  $('copyFinding').disabled=false;$('printReport').disabled=false;$('downloadCsv').disabled=false;
  $('copyFinding').onclick=()=>copyText(`TERRA TREND — ${sourceLabel()}\n${narrative(data,stats,l,key)}\n\n${nasa}\nSource: NASA POWER (https://power.larc.nasa.gov/).`);
  $('downloadCsv').onclick=()=>downloadCSV(data,stats,l,key,nasa);
