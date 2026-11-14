@@ -29,7 +29,7 @@ export async function onRequest({ request }) {
   upstream.searchParams.set("end", String(end));
   upstream.searchParams.set("format", "JSON");
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 55000);
+  const timeout = setTimeout(() => controller.abort(), 20000);
   try {
     const response = await fetch(upstream.toString(), { method: "GET", headers: { Accept: "application/json" }, signal: controller.signal });
     const headers = new Headers(response.headers);
